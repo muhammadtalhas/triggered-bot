@@ -23,7 +23,7 @@ var router = express.Router();              // get an instance of the express Ro
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
+    res.json({ message: 'hooray! welcome to our api! v2' });
 });
 
 
@@ -63,7 +63,7 @@ router.route('/new')
             botReq.on('timeout', function(err) {
                 console.log('timeout posting message '  + JSON.stringify(err));
             });
-            botReq.end(JSON.stringify(body));
+            botReq.end(JSON.stringify(req));
 
         }
     });
