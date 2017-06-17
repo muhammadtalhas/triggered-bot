@@ -42,7 +42,7 @@ router.route('/new')
                 //var payload = "{\"bot_id\"  : \"NZfziq1UFdkoQ1GdbDHdwAq6xz4tbXZsPrpmyFlr\",\"text\"    :" + vfile.messages[0] + "}"
 				var payload = " "
 				for(i=0; i < vfile.messages.length; i++){
-					payload.concat(vfile.messages[i].message
+					payload.concat(vfile.messages[i].message)
 					payload.concat("\n")
 				}
                 options = {
@@ -53,7 +53,7 @@ router.route('/new')
 
                 body = {
                     "bot_id": bot,
-                    "text": payload
+                    "text": vfile.messages[0].message
                 };
 
                 botReq = HTTPS.request(options, function (res) {
