@@ -39,8 +39,12 @@ router.route('/new')
 
             if (vfile.messages) {
                 console.log(vfile.messages[0].message)
-                var payload = "{\"bot_id\"  : \"NZfziq1UFdkoQ1GdbDHdwAq6xz4tbXZsPrpmyFlr\",\"text\"    :" + vfile.messages[0] + "}"
-
+                //var payload = "{\"bot_id\"  : \"NZfziq1UFdkoQ1GdbDHdwAq6xz4tbXZsPrpmyFlr\",\"text\"    :" + vfile.messages[0] + "}"
+				var payload = " "
+				for(i=0; i < vfile.messages.length; i++){
+					payload.concat(vfile.messages[i].message
+					payload.concat("\n")
+				}
                 options = {
                     hostname: 'api.groupme.com',
                     path: '/v3/bots/post',
@@ -49,7 +53,7 @@ router.route('/new')
 
                 body = {
                     "bot_id": bot,
-                    "text": vfile.messages[0].message
+                    "text": payload
                 };
 
                 botReq = HTTPS.request(options, function (res) {
