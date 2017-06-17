@@ -42,9 +42,9 @@ router.route('/new')
                 //var payload = "{\"bot_id\"  : \"NZfziq1UFdkoQ1GdbDHdwAq6xz4tbXZsPrpmyFlr\",\"text\"    :" + vfile.messages[0] + "}"
 				var payload = " "
 				for(i=0; i < vfile.messages.length; i++){
-					payload.concat(vfile.messages[i].message)
-					payload.concat("\n")
-				}
+					//payload.concat(vfile.messages[i].message)
+					//payload.concat("\n")
+				
                 options = {
                     hostname: 'api.groupme.com',
                     path: '/v3/bots/post',
@@ -53,7 +53,7 @@ router.route('/new')
 
                 body = {
                     "bot_id": bot,
-                    "text": vfile.messages[0].message
+                    "text": vfile.messages[i].message
                 };
 
                 botReq = HTTPS.request(options, function (res) {
@@ -72,6 +72,9 @@ router.route('/new')
                     console.log('timeout posting message ' + JSON.stringify(err));
                 });
                 botReq.end(JSON.stringify(body));
+				
+				}
+				
 
             }
 
